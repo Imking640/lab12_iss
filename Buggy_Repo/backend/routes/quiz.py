@@ -1,9 +1,10 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 import random
 
 router = APIRouter(tags=["quiz"])
 
-# I actually could have added this to a collection in mongodb
+# Questions data
 questions = [
     {
         "id": 1,
@@ -37,28 +38,34 @@ questions = [
     }
 ]
 
+# Game state
 game_state = {"high_score": 0}
-# god would hate me for not dockerizing this repo
+
+# Pydantic model for answer submission
+class AnswerSubmission(BaseModel):
+    id: int
+    answer: str
+    score: int = 0
+
 @router.get("/question")
 async def get_question():
-    question = questions[1]
+    """Fetch a random question."""
+    question = random.choice(questions)  # Randomly select a question
     return {
         "id": question["id"],
         "text": question["text"],
         "options": question["options"]
     }
 
-@router.get("/answer")
-async def submit_answer(data: dict):
-    question_id = data.get("id")
-    answer = data.get("answer")
-    score = data.get("score", 0)
-
-    question = next((q for q in questions if q["id"] == question_id), None)
+@router.post("/answer")
+async def submit_answer(data: AnswerSubmission):
+    """Submit an answer and calculate the score."""
+    question = next((q for q in questions if q["id"] == data.id), None)
     if not question:
-        return {"error": "Invalid question ID"}
+        raise HTTPException(status_code=400, detail="Invalid question ID")  # Return proper error
 
-    is_correct = answer == question["correct"]
+    is_correct = data.answer == question["correct"]
+    score = data.score
     if is_correct:
         score += 10
         if score > game_state["high_score"]:
@@ -73,4 +80,5 @@ async def submit_answer(data: dict):
 
 @router.get("/highscore")
 async def get_highscore():
+    """Fetch the current high score."""
     return {"high_score": game_state["high_score"]}
