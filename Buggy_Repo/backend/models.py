@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
-class Item(BaseModel):
-    name: str
+class Item(BaseModel): # For Data validation according to the data
+    name: str   #dhange the data type to str
     description: str
 
 class User(BaseModel):
