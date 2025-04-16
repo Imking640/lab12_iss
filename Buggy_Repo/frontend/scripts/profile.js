@@ -15,7 +15,7 @@ async function loadUsers() {
     }
     list.innerHTML = "";
 
-    const userCountEl = document.getElementById("userCount");
+    const userCountEl = document.getElementById("userCounts");
     if (userCountEl) {
       userCountEl.textContent = `Total users: ${users.length}`;
     }
