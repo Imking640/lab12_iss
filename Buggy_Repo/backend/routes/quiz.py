@@ -57,7 +57,7 @@ async def get_question():
         "options": question["options"]
     }
 
-@router.post("/answer")
+@router.post("/answer")  #changed get to post
 async def submit_answer(data: AnswerSubmission):
     """Submit an answer and calculate the score."""
     question = next((q for q in questions if q["id"] == data.id), None)
