@@ -16,9 +16,15 @@
     <h1>🧠 Bash Quiz</h1>
     <p id="scoreDisplay">Score: 0 | High Score: 0</p>
     <div id="question">Loading question...</div>
-    <form id="answerForm"></form>
+    <form id="answerForm">
+      <!-- Added input and submit button to complete the form -->
+      <input type="text" id="answerInput" placeholder="Your answer" required />
+      <button type="submit">Submit</button>
+    </form>
     <p id="feedback"></p>
     <button id="resetBtn" class="hidden">Reset Quiz</button>
+    <!-- Added label for accessibility -->
+    <label for="search">Search Attempts:</label>
     <input type="text" id="search" placeholder="Search attempts..." />
     <p id="attemptCount">Total attempts: 0</p>
     <div id="attemptList" class="attempt-scrollable"></div>
