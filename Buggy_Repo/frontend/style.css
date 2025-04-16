@@ -1,2 +1,59 @@
-Aah I was too lazy to implement this
-You can do it
+/* Reset browser default spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body style */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* Make the navbar a solid blue bar at the very top */
+  nav {
+    background-color: #007BFF;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Style the navbar links */
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.2s ease;
+  }
+  
+  nav a:hover {
+    color: #FFD700;
+  }
+  
+  /* Container padding */
+  .container {
+    padding: 2em;
+  }
+  
+  /* Style ALL buttons to match navbar */
+  button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
