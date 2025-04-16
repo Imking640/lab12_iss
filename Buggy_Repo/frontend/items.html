@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Added viewport meta tag for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Items</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,17 +14,29 @@
     <a href="analytics.html">Analytics</a>
     <a href="news.html">News</a>
   </nav>
-
-  <!-- Added a missing container for main content -->
-  <main>
-    <h1>Welcome to the Items Page</h1>
-    <p>Here you can manage and view your items.</p>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Your Website. All rights reserved.</p> <!-- Added a footer for better structure -->
-  </footer>
-
+  <div class="container">
+    <p id="itemCount">Total items: 1</p>
+    
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search items...">
+    </div>
+    
+    <h2>📦 Manage Items</h2>
+    
+    <div class="add-item-form">
+      <input type="text" id="name" placeholder="Item name">
+      <input type="text" id="description" placeholder="Description">
+      <button id="addItemBtn" class="primary-btn">Add Item</button>
+    </div>
+    
+    <div id="itemList">
+      <div class="item-entry">
+        <p>by: jknyu</p>
+      </div>
+    </div>
+    
+    <button id="saveBtn" class="secondary-btn">Save</button>
+  </div>
   <script src="scripts/items.js"></script>
 </body>
 </html>
